@@ -1,0 +1,39 @@
+<odoo>
+  <data>
+
+      <!-- Inherit Form View to Modify it -->
+      <record id="chicdress.product_template_form_view" model="ir.ui.view">
+          <field name="name">chicdress.product.template.form.view</field>
+          <field name="model">product.template</field>
+          <field name="inherit_id" ref="product.product_template_form_view"/>
+          <field name="arch" type="xml">
+
+              <xpath expr="//field[@name='uom_po_id']" position="after">
+                  <field name="status" widget="statusbar" clickable="True" />
+              </xpath>
+
+          </field>
+      </record>
+
+    <record id="chicdress_tree_status_dress" model="ir.ui.view">
+        <field name="name">chicdress.tree.status.dress</field>
+        <field name="model">chicdress.state.dress</field>
+        <field name="arch" type="xml">
+            <tree string="Status Prendas" editable="bottom">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="chicdress_action_status_dress">
+        <field name="name">Status Prendas</field>
+        <field name="res_model">chicdress.state.dress</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="chicdress_menu_status_dress" parent="stock.menu_stock_general_settings" name="Status Prendas" sequence="12"
+          action="chicdress_action_status_dress"/>
+
+  </data>
+</odoo>
