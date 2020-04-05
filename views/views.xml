@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='product_tmpl_id']" position="attribute">
+            <xpath expr="//field[@name='product_tmpl_id']" position="attributes">
                 <attribute name="invisible">0</attribute>
             </xpath>
 
