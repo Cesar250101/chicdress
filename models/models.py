@@ -27,6 +27,11 @@ class SaleOrderLine(models.Model):
 
     imagen_mediana = fields.Binary(string="Imagen", related="product_id.imagen_mediana" )
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    devolucion_date = fields.Date(string="Fecha Devolución", required=True, )
+
 
 class Desapcho(models.Model):
     _inherit = 'stock.picking'
