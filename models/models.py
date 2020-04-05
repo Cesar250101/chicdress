@@ -42,4 +42,4 @@ class LineasStock(models.Model):
 class Proveedor(models.Model):
     _inherit = 'res.partner'
 
-    product_ids = fields.One2many(comodel_name="product.template", inverse_name="id", string="Productos", required=False, )
+    product_ids = fields.One2many(comodel_name="product.supplierinfo", inverse_name="name", string="Productos", required=False, )
