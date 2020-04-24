@@ -1,20 +1,20 @@
 <odoo>
   <data>
 
-    <record id="chicdress.view_pos_order_filter" model="ir.ui.view">
-        <field name="name">chicdress.view.pos.order.filter</field>
-        <field name="model">pos.order</field>
-        <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
-        <field name="arch" type="xml">
-              <field name="Posted" position="after">
+
+      <record id="chicdress.view_pos_order_filter" model="ir.ui.view">
+         <field name="name">chicdress.view.pos.order.filter</field>
+         <field name="model">pos.order</field>
+          <field name="arch" type="xml">
+              <xpath expr="//search" position="inside">
                   <filter string="En Tienda" domain="[('status','=',1)]"/>
                   <filter string="Lavandería" domain="[('status','=',2)]"/>
                   <filter string="Reservado" domain="[('status','=',3)]"/>
                   <filter string="Arrendado" domain="[('status','=',4)]"/>
                   <filter string="Eliminar" domain="[('status','=',5)]"/>
-              </field>
-        </field>
-    </record>
+          </xpath>
+         </field>
+      </record>
 
       <record id="chicdress.view_pos_order_tree" model="ir.ui.view">
           <field name="name">chicdress.view.pos.order.tree</field>
