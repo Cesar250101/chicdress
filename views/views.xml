@@ -6,7 +6,7 @@
         <field name="model">pos.order</field>
         <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
         <field name="arch" type="xml">
-              <field name="name" position="Posted">
+              <field name="Posted" position="after">
                   <filter string="En Tienda" domain="[('status','=',1)]"/>
                   <filter string="Lavandería" domain="[('status','=',2)]"/>
                   <filter string="Reservado" domain="[('status','=',3)]"/>
