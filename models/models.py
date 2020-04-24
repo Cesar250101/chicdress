@@ -37,6 +37,10 @@ class Desapcho(models.Model):
     _inherit = 'stock.picking'
     fecha_ini = fields.Date(string="Fecha Inicial", required=False, )
     fecha_fin= fields.Date(string="Fecha Final", required=False, )
+    location_dest_id = fields.Many2one(comodel_name="stock.location", string="Ubic. Destino", required=True, )
+
+
+
 
 class LineasStock(models.Model):
     _inherit = 'stock.move'
@@ -48,3 +52,16 @@ class Proveedor(models.Model):
     _inherit = 'res.partner'
 
     product_ids = fields.One2many(comodel_name="product.supplierinfo", inverse_name="name", string="Productos", required=False, )
+
+class PosOrder(models.Model):
+    _inherit = 'pos.order'
+
+    status = fields.Many2one(comodel_name="chicdress.state.dress", string="Ubicación", required=False,default=1, readonly=False)
+
+    @api.onchange('status')
+    def _onchange_status(self):
+        order_lines = self.mapped('lines')
+        for i in order_lines:
+            product_tmp_id=i.product_id.product_tmpl_id.id
+            product_template=self.env['product.template'].search([('id', '=', product_tmp_id)])
+            product_template.write({'status': self.status.id})

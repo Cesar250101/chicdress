@@ -1,6 +1,21 @@
 <odoo>
   <data>
 
+<!-- Formula de ordenes de venta de punto de venta -->
+    <record id="chicdress.view_pos_pos_form" model="ir.ui.view">
+        <field name="name">chicdress.view.pos.pos.form</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                <!--<field name="status" widget="statusbar" readonly="0"/>-->
+                <field name="status"/>
+            </xpath>
+
+        </field>
+    </record>
+
       <record id="chicdress.view_quotation_tree" model="ir.ui.view">
           <field name="name">chicdress.view.quotation.tree</field>
           <field name="model">sale.order</field>
